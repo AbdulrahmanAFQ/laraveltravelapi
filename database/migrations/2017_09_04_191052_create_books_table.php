@@ -16,15 +16,15 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type');
-            $table->string('depart_date');
-            $table->string('depart_time');
-            $table->string('return_date');
-            $table->string('return_time');
+            $table->date('depart_date');
+            $table->time('depart_time');
+            $table->date('return_date')->nullable();
+            $table->time('return_time')->nullable();
             $table->string('dep_city');
             $table->string('des_city');
-            $table->string('class');
-            $table->string('adults');
-            $table->string('children');
+            $table->enum('class', ['Economy', 'Business', 'First class']);
+            $table->integer('total_adults');
+            $table->integer('total_children');
             $table->timestamps();
         });
     }
