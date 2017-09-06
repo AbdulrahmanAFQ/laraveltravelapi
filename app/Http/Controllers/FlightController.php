@@ -37,19 +37,12 @@ class FlightController extends Controller
         $book->save();
 
         // Bring the Passengers infromation
-        $passenger = new Passenger();
-        $passenger->book_id = $request->input('passengers.book_id');
-        $passenger->first_name = $request->input('first_name');
-        $passenger->last_name = $request->input('last_name');
-        $passenger->save();
+        $passengers = $book->passengers()->createMany($request->input('passengers'));
 
         return response()->json(
             [
                 'booking' => $book,
-                'passengers' => array(
-                    'first_name' => $passenger->first_name,
-                    'last_name' => $passenger->last_name
-                )
+                'passengers' => $passengers,
             ], 201);
     }
 
