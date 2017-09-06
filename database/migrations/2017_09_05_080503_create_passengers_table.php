@@ -15,9 +15,11 @@ class CreatePassengersTable extends Migration
     {
         Schema::create('passengers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('book_id');
+            $table->unsignedInteger('book_id');
             $table->string('first_name');
             $table->string('last_name');
+
+            $table->foreign('book_id')->references('id')->on('books');
         });
     }
 
