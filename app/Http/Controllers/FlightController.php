@@ -32,8 +32,8 @@ class FlightController extends Controller
         $book->dep_city = $request->input('dep_city');
         $book->des_city = $request->input('des_city');
         $book->class = $request->input('class');
-        $book->adults = $request->input('adults');
-        $book->children = $request->input('children');
+        $book->total_adults = $request->input('total_adults');
+        $book->total_children = $request->input('total_children');
         $book->save();
 
         // Bring the Passengers infromation
