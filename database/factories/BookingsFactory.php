@@ -28,11 +28,11 @@ $factory->define(App\Passenger::class,
 $factory->define(App\Book::class, function (Faker\Generator $faker) {
 
         return [
-            'type'           => $type = $faker->randomElement(['One Way', 'Tow Ways']),
+            'type'           => $type = $faker->randomElement(['One Way', 'Two Ways']),
             'depart_date'    => $faker->dateTimeBetween('now', '+3 days'),
             'depart_time'    => $faker->time(),
-            'return_date'    => $type == 'Tow Ways' ? $faker->dateTimeBetween('+5 days', '+30 days') : null,
-            'return_time'    => $type == 'Tow Ways' ? $faker->time() : null,
+            'return_date'    => $type == 'Two Ways' ? $faker->dateTimeBetween('+5 days', '+30 days') : null,
+            'return_time'    => $type == 'Two Ways' ? $faker->time() : null,
             'dep_city'       => $faker->city,
             'des_city'       => $faker->city,
             'class'          => $faker->randomElement(['Economy', 'Business', 'First class']),
