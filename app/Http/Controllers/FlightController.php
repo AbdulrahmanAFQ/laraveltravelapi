@@ -22,6 +22,22 @@ class FlightController extends Controller
 
     public function postBookFlight(Request $request)
     {
+        $this->validate($request, [
+            'type'                    => ['required', 'in:One Way, Two Ways'],
+            'depart_date'             => ['required', 'date'],
+            'depart_time'             => ['required', 'date_format:h:i'],
+            'return_date'             => ['required_if:type, Two Ways'],
+            'return_time'             => ['required_if:type, Two Ways'],
+            'dep_city'                => ['required', 'string'],
+            'des_city'                => ['required', 'string'],
+            'class'                   => ['required', 'in: Economy, Business,First Class'],
+            'total_adults'            => ['required', 'integer'],
+            'total_children'          => ['required', 'integer'],
+            'passengers'              => ['required', 'array'],
+            'passengers.*.first_name' => 'string',
+            'passengers.*.last_name'  => 'string',
+        ]);
+
         // Bring the booking infromation
         $book = new Book();
         $book->type = $request->input('type');
