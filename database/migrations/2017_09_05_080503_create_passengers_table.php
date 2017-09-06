@@ -19,7 +19,10 @@ class CreatePassengersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
 
-            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('book_id')
+                ->references('id')
+                ->on('books')
+                ->onDelete('cascade');
         });
     }
 

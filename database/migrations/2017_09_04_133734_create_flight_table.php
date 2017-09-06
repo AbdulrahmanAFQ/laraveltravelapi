@@ -25,7 +25,10 @@ class CreateFlightTable extends Migration
             $table->integer('price');
             $table->timestamps();
 
-            $table->foreign('airline_id')->references('id')->on('airlines');
+            $table->foreign('airline_id')
+                ->references('id')
+                ->on('airlines')
+                ->onDelete('cascade');
         });
     }
 
