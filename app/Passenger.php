@@ -9,4 +9,9 @@ class Passenger extends Model
     protected $table = 'passengers';
     
     public $timestamps = false;
+
+    protected $fillable = [
+        'first_name',
+        'last_name'
+    ];
 }
