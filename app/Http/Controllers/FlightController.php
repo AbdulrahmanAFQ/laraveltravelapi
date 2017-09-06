@@ -41,7 +41,6 @@ class FlightController extends Controller
         $passenger->book_id = $request->input('passengers.book_id');
         $passenger->first_name = $request->input('first_name');
         $passenger->last_name = $request->input('last_name');
-        return $passenger;
         $passenger->save();
 
         return response()->json(
